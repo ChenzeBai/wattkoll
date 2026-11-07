@@ -7,9 +7,9 @@
 
 import * as f from './format.js';
 
-const HAS = (...words) => (q, ...rest) => {
+const HAS = (...words) => (q) => {
   const s = q.toLowerCase();
-  return words.some((w) => s.includes(w)) || rest.some((w) => s.includes(w));
+  return words.some((w) => s.includes(w));
 };
 
 const intents = [

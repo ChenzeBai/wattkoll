@@ -3,7 +3,7 @@
 **Find where a student flat leaks energy — and what to do about it this week.**
 
 Wattkoll is a working first version built for the *AI for Energy Saving* hackathon
-track. A student answers nine quick questions about their flat, habits and
+track. A student answers a handful of quick questions about their flat, habits and
 appliances; Wattkoll turns that into a full-year energy and cost baseline, a
 ranked list of waste with kronor attached, and a plan they can actually finish.
 

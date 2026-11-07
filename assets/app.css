@@ -8,7 +8,7 @@
   --paper-2: #ece6d8;
   --white: #fffdf8;
   --ink: #14150f;
-  --muted: #6c675b;
+  --muted: #5f5a4f;
   --line: #dcd4c2;
   --line-soft: #e8e2d3;
   --green: #123a31;
@@ -669,7 +669,7 @@ input[type="range"]::-webkit-slider-thumb {
   box-shadow: 0 0 0 1px var(--green), var(--shadow);
 }
 
-.wc-top { display: flex; align-items: center; gap: 8px; }
+.wc-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .wc-spacer { flex: 1; }
 
 .pill {
@@ -927,8 +927,17 @@ input[type="range"]::-webkit-slider-thumb {
 @media (max-width: 680px) {
   .setup { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr 1fr; gap: 16px; }
-  .ledger-row { grid-template-columns: 110px 1fr 84px; }
+  .ledger-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "name value" "bar bar";
+    row-gap: 8px;
+    padding: 14px 0;
+  }
+  .ledger-name { grid-area: name; }
+  .ledger-bar { grid-area: bar; }
   .ledger-kwh { display: none; }
+  .ledger-sek { display: block; grid-area: value; }
+  .ledger-total strong { font-size: 18px; }
   .plan-bar { grid-template-columns: 1fr; }
   .msg { max-width: 92%; }
   .top .ghost-link { display: none; }

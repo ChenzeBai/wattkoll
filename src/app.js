@@ -143,12 +143,12 @@ function buildForm() {
       label: 'Electricity contract', value: p.tariff.type,
       options: [{ value: 'spot', label: 'Spot' }, { value: 'fixed', label: 'Fixed' }],
     })}
-    ${numField('tariff.markup', { label: 'Grid, fees & VAT on top', value: p.tariff.markup, min: 0, max: 2, step: 0.05, unit: 'kr/kWh' })}
+    ${numField('tariff.markup', { label: 'Grid & fees (excl. VAT)', value: p.tariff.markup, min: 0, max: 2, step: 0.05, unit: 'kr/kWh' })}
     <label class="field" data-if="fixed">
       <span>Fixed price <b>kr/kWh incl. VAT</b></span>
       <input type="number" data-field="tariff.fixed" value="${p.tariff.fixed}" min="0.2" max="5" step="0.05" inputmode="decimal">
     </label>
-    <p class="hint">Spot prices are today’s SE area average. District heating is usually billed per kWh in the rent.</p>
+    <p class="hint">Spot prices are today’s SE area average; 25% VAT is added on top. District heating is usually billed per kWh in the rent.</p>
   </div>`;
 }
 
@@ -312,20 +312,21 @@ function renderWaste(m) {
   grid.innerHTML = m.actions.map((a) => {
     const picked = state.picked.has(a.id);
     const kwh = a.kwh > 0 ? `${f.num(a.kwh)} kWh · ` : 'same kWh · ';
-    const co2 = a.kwh > 0 ? `${f.kg(a.co2)} CO₂e` : 'no energy saved';
+    const co2 = a.id === 'price_shift' ? 'cheaper hours' : a.kwh > 0 ? `${f.kg(a.co2)} CO₂e` : '';
     const pb = a.payback
-      ? (a.payback < 1 ? `pays back in ${Math.max(1, Math.round(a.payback * 12))} months` : `pays back in ${f.num(a.payback, 1)} yrs`)
+      ? (a.payback < 1 ? `pays back in ${Math.max(1, Math.round(a.payback * 12))} mo` : `pays back in ${f.num(a.payback, 1)} yrs`)
       : '';
     return `
     <article class="waste-card" data-picked="${picked}">
       <div class="wc-top">
         <span class="pill">${a.category}</span>
         <span class="pill effort">${a.effort}</span>
+        ${pb ? `<span class="pill">${pb}</span>` : ''}
         ${picked ? '<span class="pill pick">In plan</span>' : ''}
       </div>
       <h3>${esc(a.title)}</h3>
       <div class="wc-figure"><b>${f.sek(a.sek)}/yr</b>
-        <span>${kwh}${co2}${pb ? ` · ${pb}` : ''}</span>
+        <span>${kwh}${co2}</span>
       </div>
       <div class="wc-spacer"></div>
       <details><summary>How</summary><ul>${a.how.map((h) => `<li>${esc(h)}</li>`).join('')}</ul></details>
