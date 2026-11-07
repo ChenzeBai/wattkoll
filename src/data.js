@@ -184,7 +184,7 @@ export const ACTIONS = {
     ],
   },
   price_shift: {
-    title: 'Run the machines at the cheap hours',
+    title: 'Run machines at cheap hours',
     category: 'Timing',
     effort: '2 min',
     confidence: 0.85,
