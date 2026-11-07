@@ -134,7 +134,7 @@ text(s, M, 4.62, 5.5, 1.0, [{
 rule(s, M, 6.28, 5.2, RGBColor(0x2C, 0x5A, 0x4E))
 
 text(s, M, 6.45, 6.0, 0.6, [
-    {"runs": [{"t": "xiec224jw@student.lnu.se", "font": MONO, "size": 11, "color": LIME}], "line": 1.0},
+    {"runs": [{"t": "cb224jw@student.lnu.se", "font": MONO, "size": 11, "color": LIME}], "line": 1.0},
     {"runs": [{"t": "Wattkoll  ·  built in 5 hours", "font": MONO, "size": 8, "color": RGBColor(0x8F, 0xA8, 0x9C)}],
      "line": 1.6},
 ])
@@ -185,7 +185,7 @@ text(s, RX + 1.9, RY + 3.95, 1.55, 0.35,
 text(s, RX + pad, RY + 4.66, RW - 2 * pad, 0.4,
      [{"runs": [{"t": "5 197 kWh  ·  323 kg CO₂e  ·  INCL. VAT", "font": MONO, "size": 7, "color": MUTED}]}])
 
-notes(s, "Timing 0:00–0:25. Open with the receipt, not with the problem: every student has seen a "
+notes(s, "Timing 0:00–0:30. Open with the receipt, not with the problem: every student has seen a "
          "bill like this and has no idea what is inside it. One sentence on what Wattkoll is, then move.")
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -216,112 +216,14 @@ for i, (n, label) in enumerate(stats):
 
 foot(s, "Wattkoll model · 22 m² corridor room, district heating, SE3")
 page_no(s, 2)
-notes(s, "Timing 0:25–1:00. The point is not that energy is expensive, it is that the person "
+notes(s, "Timing 0:30–1:10. The point is not that energy is expensive, it is that the person "
          "with the agency has no feedback loop. Landlords have the meters; students have the shower.")
-
-# ─────────────────────────────────────────────────────────────────────────
-# 03 · product
-# ─────────────────────────────────────────────────────────────────────────
-s = slide(PAPER)
-kicker(s, "02 · The product")
-text(s, M, 1.02, 10.5, 0.9, [{"runs": [{"t": "Nine answers in. A whole year out.", "font": HEAD, "size": 40, "color": INK}]}])
-
-steps = [
-    ("01", "Answer", "Size, heating, price area, shower length, what’s plugged in. Forty seconds, no account."),
-    ("02", "Model", "A physics model builds the baseline: kWh per end use, at your tariff, on today’s spot prices."),
-    ("03", "Act", "A plan ranked by kronor, with the how-to and the payback. Tick what you’ll do; the total updates."),
-]
-for i, (nb, title, desc) in enumerate(steps):
-    x = M + i * 3.95
-    rule(s, x, 2.55, 3.45, INK, 1.2)
-    text(s, x, 2.72, 3.3, 0.3, [{"runs": [{"t": nb, "font": MONO, "size": 10, "color": CLAY}]}])
-    text(s, x, 3.02, 3.3, 0.5, [{"runs": [{"t": title, "font": HEAD, "size": 26, "color": INK}]}])
-    text(s, x, 3.72, 3.25, 1.5, [{"runs": [{"t": desc, "font": BODY, "size": 13, "color": MUTED}], "line": 1.4}])
-
-rect(s, M, 5.62, W - 2 * M, 1.0, fill=PAPER2)
-text(s, M + 0.3, 5.62, 11.0, 1.0, [{
-    "runs": [{"t": "No meter. No account. No personal data leaves the browser — "
-                   "and the whole model runs again in 40 ms every time you move a slider.",
-              "font": BODY, "size": 13, "color": INK}],
-    "line": 1.3,
-}], anchor=MSO_ANCHOR.MIDDLE)
-page_no(s, 3)
-notes(s, "Timing 1:00–1:35. Walk the three steps quickly; the demo does the work on the next slide. "
-         "Emphasise that there is no meter integration — that is why a pilot takes days, not quarters.")
-
-# ─────────────────────────────────────────────────────────────────────────
-# 04 · demo
-# ─────────────────────────────────────────────────────────────────────────
-s = slide(PAPER)
-kicker(s, "03 · The demo")
-text(s, M, 0.95, 3.6, 1.2, [{"runs": [{"t": "This is what the\nstudent sees.", "font": HEAD, "size": 30, "color": INK}],
-                             "line": 1.05}])
-
-bullets = [
-    ("A receipt, not a dashboard", "The year in five lines: heat, hot water, gadgets, light, standby."),
-    ("Waste ranked by kronor", "Not by guilt. Each fix has a how-to and a payback time."),
-    ("Cheap hours, live", "Today’s 15-minute spot prices, with the window to run the wash."),
-]
-y = 2.62
-for title, desc in bullets:
-    rule(s, M, y, 0.42, CLAY, 2.0)
-    text(s, M + 0.6, y - 0.04, 3.1, 0.28, [{"runs": [{"t": title, "font": BODY, "size": 12, "color": INK, "bold": True}]}])
-    text(s, M + 0.6, y + 0.28, 3.0, 0.7, [{"runs": [{"t": desc, "font": BODY, "size": 11, "color": MUTED}], "line": 1.3}])
-    y += 1.34
-
-pic = s.shapes.add_picture("images/hero-crop.png", Inches(4.45), Inches(0.98), width=Inches(8.1))
-pic_h = pic.height / 914400
-rect(s, 4.45, 0.98, 8.1, pic_h, fill=None, line=LINE, lw=1)
-text(s, 4.45, 0.98 + pic_h + 0.12, 8.1, 0.3,
-     [{"runs": [{"t": "LIVE APP  ·  SE3  ·  7 NOV 2026", "font": MONO, "size": 7.5, "color": MUTED}]}])
-page_no(s, 4)
-notes(s, "Timing 1:35–2:20. Switch to the live demo here if the room allows: change shower minutes and "
-         "show the receipt and the plan moving. If the wifi is bad, the bundled price snapshot keeps it alive.")
-
-# ─────────────────────────────────────────────────────────────────────────
-# 05 · trust
-# ─────────────────────────────────────────────────────────────────────────
-s = slide(PAPER)
-kicker(s, "04 · Why you can trust it")
-text(s, M, 1.02, 7.4, 1.5, [{"runs": [{"t": "The model owns\nthe number.", "font": HEAD, "size": 40, "color": INK}], "line": 1.05}])
-text(s, M, 2.5, 7.1, 0.9, [{"runs": [{"t": "The AI only writes the sentence. Every figure is a formula you can check by hand.",
-                                       "font": BODY, "size": 14.5, "color": MUTED}], "line": 1.4}])
-
-formulas = [
-    ("heat", "90 kWh/m² ÷ 0.95", "district heating, Stockholm"),
-    ("shower", "8 min × 9 L/min × 50 K × 4.18", "→ kWh of hot water"),
-    ("standby", "31 W × 8 760 h", "32 devices, measured watts"),
-    ("price", "(spot + grid) × 1.25", "VAT included, per area"),
-]
-y = 3.65
-for name, formula, note_txt in formulas:
-    text(s, M, y, 1.2, 0.26, [{"runs": [{"t": name, "font": MONO, "size": 11, "color": CLAY}]}])
-    text(s, M + 1.15, y - 0.02, 4.4, 0.26, [{"runs": [{"t": formula, "font": MONO, "size": 11, "color": INK}]}])
-    text(s, M + 5.3, y, 2.1, 0.26, [{"runs": [{"t": note_txt, "font": BODY, "size": 9, "color": MUTED}]}])
-    y += 0.52
-
-rect(s, 8.35, 1.02, 4.2, 4.9, fill=WHITE, line=LINE)
-text(s, 8.6, 1.28, 3.7, 0.3, [{"runs": [{"t": "SANITY CHECK", "font": MONO, "size": 8, "color": MUTED}]}])
-checks = [("5 197", "kWh a year"), ("7 435", "kr a year"), ("323", "kg CO₂e a year")]
-yy = 1.72
-for n, unit in checks:
-    text(s, 8.6, yy, 3.7, 0.6, [{"runs": [{"t": n, "font": MONO, "size": 34, "color": INK}]}])
-    text(s, 8.6, yy + 0.55, 3.7, 0.25, [{"runs": [{"t": unit, "font": BODY, "size": 11, "color": MUTED}]}])
-    yy += 1.42
-
-text(s, M, 6.05, 7.1, 0.4, [{"runs": [{"t": "The coach answers in prose, but reads every number from the model — never the other way round.",
-                                        "font": BODY, "size": 11, "color": MUTED}]}])
-text(s, M, 6.62, 7.0, 0.3, [{"runs": [{"t": "12 model tests · assumptions and sources printed on the site",
-                                        "font": MONO, "size": 8.5, "color": MUTED}]}])
-page_no(s, 5)
-notes(s, "Timing 2:20–2:55. This is the slide for the technical judge. Say plainly which part is AI "
-         "and which part is arithmetic — that honesty is the differentiator.")
 
 # ─────────────────────────────────────────────────────────────────────────
 # 06 · savings
 # ─────────────────────────────────────────────────────────────────────────
 s = slide(PAPER)
-kicker(s, "05 · The sustainability case")
+kicker(s, "02 · The sustainability case")
 text(s, M, 0.98, 10.8, 0.7, [{"runs": [{"t": "What one student can save, per year.", "font": HEAD, "size": 36, "color": INK}]}])
 
 nums = [("1 240", "kWh", "of 5 197 — a quarter of the energy"), ("1 420", "kr", "of a 6 152 kr annual bill"),
@@ -358,8 +260,8 @@ text(s, M, 6.42, 11.6, 0.5, [{
     "runs": [{"t": "Sources: Energimyndigheten (appliance kWh, 5%/°C) · elprisetjustnu.se (spot) · "
                    "Electricity Maps 40 g/kWh · Stockholm Exergi 70 g/kWh · typical-year spot 0.90 kr/kWh · table in docs/SAVINGS.md",
               "font": MONO, "size": 7.5, "color": MUTED}], "line": 1.3}])
-page_no(s, 6)
-notes(s, "Timing 2:55–3:35. Lead with the three numbers, then the conservative case — judges trust the "
+page_no(s, 3)
+notes(s, "Timing 1:10–1:55. Lead with the three numbers, then the conservative case — judges trust the "
          "smaller number more. Mention that the sources line is on the slide, not in an appendix.")
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -367,7 +269,7 @@ notes(s, "Timing 2:55–3:35. Lead with the three numbers, then the conservative
 # ─────────────────────────────────────────────────────────────────────────
 s = slide(GREEN)
 text(s, M, 0.72, 8.0, 0.3,
-     [{"runs": [{"t": "06  ·  THE SCALE", "font": MONO, "size": 10, "color": LIME}]}])
+     [{"runs": [{"t": "03  ·  THE SCALE", "font": MONO, "size": 10, "color": LIME}]}])
 text(s, M, 1.28, 9.0, 1.3, [{"runs": [{"t": "100 000 student homes\ndo this.", "font": HEAD, "size": 44, "color": CREAM}],
                              "line": 1.06}])
 
@@ -387,15 +289,15 @@ text(s, M, 5.95, 8.4, 0.9, [{
               "font": BODY, "size": 11, "color": RGBColor(0x9F, 0xB5, 0xA8)}],
     "line": 1.45,
 }])
-page_no(s, 7, RGBColor(0x6E, 0x8A, 0x7C))
-notes(s, "Timing 3:35–3:55. Do not oversell the carbon. The credible claim is money and peak load; "
+page_no(s, 4, RGBColor(0x6E, 0x8A, 0x7C))
+notes(s, "Timing 1:55–2:20. Do not oversell the carbon. The credible claim is money and peak load; "
          "the CO₂ number is a bonus from district heating.")
 
 # ─────────────────────────────────────────────────────────────────────────
 # 08 · business
 # ─────────────────────────────────────────────────────────────────────────
 s = slide(PAPER)
-kicker(s, "07 · The business")
+kicker(s, "04 · The business")
 text(s, M, 1.0, 11.4, 1.2, [{
     "runs": [{"t": "The student pays nothing.\nThe landlord pays 12 kr a home, a month.", "font": HEAD, "size": 33,
               "color": INK}], "line": 1.12}])
@@ -418,15 +320,15 @@ text(s, M, 5.95, 11.5, 0.7, [{
     "runs": [{"t": "The landlord already owns the meters and the CSRD duty; we supply the behaviour layer. "
                    "One pilot building, measured against a control, then the portfolio.",
               "font": BODY, "size": 12, "color": MUTED}], "line": 1.35}])
-page_no(s, 8)
-notes(s, "Timing 3:55–4:25. Name the buyer explicitly — student housing operators, not students. "
+page_no(s, 5)
+notes(s, "Timing 2:20–3:05. Name the buyer explicitly — student housing operators, not students. "
          "The 12 kr price is small enough to fit an existing sustainability budget.")
 
 # ─────────────────────────────────────────────────────────────────────────
 # 09 · why now
 # ─────────────────────────────────────────────────────────────────────────
 s = slide(PAPER)
-kicker(s, "08 · Why now")
+kicker(s, "05 · Why now")
 text(s, M, 1.0, 10.5, 0.8, [{"runs": [{"t": "Three doors are open at once.", "font": HEAD, "size": 36, "color": INK}]}])
 
 why = [("Prices swing", "SE3 moved from 1.08 to 2.50 kr/kWh inside one day. Timing advice is no longer a gimmick."),
@@ -447,8 +349,8 @@ for i, (title, desc) in enumerate(nexts):
     x = M + i * 3.95
     text(s, x, 5.24, 3.3, 0.3, [{"runs": [{"t": f"{i+1}. {title}", "font": BODY, "size": 13, "color": INK, "bold": True}]}])
     text(s, x, 5.58, 3.25, 0.5, [{"runs": [{"t": desc, "font": BODY, "size": 11, "color": MUTED}]}])
-page_no(s, 9)
-notes(s, "Timing 4:25–4:45. Keep this fast: three reasons, three next steps. If time is short, skip the "
+page_no(s, 6)
+notes(s, "Timing 3:05–3:30. Keep this fast: three reasons, three next steps. If time is short, skip the "
          "next-90-days row and go straight to the close.")
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -462,7 +364,7 @@ text(s, M, 3.12, 8.6, 0.8, [{
               "font": BODY, "size": 15, "color": RGBColor(0xC9, 0xD6, 0xCC)}], "line": 1.4}])
 
 text(s, M, 4.0, 8.0, 0.3, [{"runs": [{"t": "WRITE TO US", "font": MONO, "size": 8, "color": RGBColor(0x6E, 0x8A, 0x7C)}]}])
-text(s, M, 4.22, 8.0, 0.45, [{"runs": [{"t": "xiec224jw@student.lnu.se", "font": MONO, "size": 20, "color": LIME}]}])
+text(s, M, 4.22, 8.0, 0.45, [{"runs": [{"t": "cb224jw@student.lnu.se", "font": MONO, "size": 20, "color": LIME}]}])
 
 recap = [("1 240", "kWh"), ("1 420", "kr"), ("80", "kg CO₂e")]
 for i, (n, u) in enumerate(recap):
@@ -473,7 +375,7 @@ for i, (n, u) in enumerate(recap):
 
 text(s, W - M - 3.2, 6.55, 3.2, 0.3, [{"runs": [{"t": "Wattkoll · AI for Energy Saving", "font": MONO, "size": 8,
                                                     "color": RGBColor(0x6E, 0x8A, 0x7C)}], "align": PP_ALIGN.RIGHT}])
-notes(s, "Timing 4:45–5:00. Stop talking. Leave the email on screen for the Q&A.")
+notes(s, "Timing 3:30–3:50. Stop talking. Leave the email on screen for the Q&A.")
 
 out = Path(__file__).parent / "Wattkoll-pitch.pptx"
 prs.save(out)

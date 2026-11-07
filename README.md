@@ -26,10 +26,8 @@ Requires Python 3.10+ and nothing else. For the test suite: `node --test` (Node 
 | **Receipt** | Annual kWh, SEK and CO₂e for the flat, broken down by end use — receipt-style, updates live. |
 | **Your place** | Housing type, size, people, heating system, price area, tariff, shower length, indoor temperature, bulbs, appliances, draughts. |
 | **The bill, taken apart** | Space heating / hot water / appliances / lighting / standby, with the biggest slice called out. |
-| **What's leaking** | Waste detected from the answers, ranked by kr/year, each with a how-to and a payback time. Tick the ones you'll do. |
-| **Cheap hours** | Today's real Swedish spot price curve (15-minute resolution), the cheapest four-hour window, and what load-shifting is worth per year. |
-| **The coach** | Grounded answers about *your* numbers. Deterministic by default; plug in any OpenAI-compatible endpoint for free-form questions. |
 | **The numbers** | The full per-student-per-year table (kWh / kr / kg CO₂e), assumptions and sources, editable carbon factors. |
+| **Contact** | A mailto for operators who want a pilot. |
 
 ## How the model works
 
@@ -66,11 +64,12 @@ UI, the tests and the documents all use the same numbers.
 Honest answer: the **core model is a transparent expert system**, not a neural
 network. That is a feature — a judge can check every number by hand.
 
-The **coach** is where an LLM comes in. It receives the user's computed model as
-JSON and answers in prose, and it is strictly grounded: it may not invent
-numbers. Without an API key it falls back to a small intent router with
-templated, number-grounded answers (also in `src/coach.js`), so the demo never
-breaks on stage.
+`src/coach.js` holds the LLM layer: it takes the computed model as JSON and
+answers in prose, strictly grounded, with a rule-based fallback when no key is
+set. **That view is not exposed in this build** — sections 03–05 of the page
+(the waste cards, the live price chart and the coach) were cut to keep the page
+short. The model behind them is still in `src/model.js`, and the action list it
+produces is what powers the table on "The numbers".
 
 If we had a second day, the obvious next step is learning the waste priors from
 real metered data (the organisers' synthetic dataset is the right shape) and
@@ -86,7 +85,7 @@ src/data.js           assumptions, appliance library, action copy, sources
 src/model.js          the model: baseline, waste detection, price shifting
 src/prices.js         live prices + offline snapshot
 src/coach.js          grounded answers, optional LLM
-src/app.js            UI: form, charts, plan, chat
+src/app.js            UI: form, receipt, ledger, numbers table
 server.py             static server + price proxy (stdlib only)
 data/                 price snapshot, API cache
 tests/model.test.mjs  12 tests over the model

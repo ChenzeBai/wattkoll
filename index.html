@@ -93,75 +93,10 @@
     </div>
   </section>
 
-  <!-- ───────────────────────── waste ───────────────────────── -->
-  <section class="section" id="waste">
-    <div class="section-head">
-      <p class="kicker">03 · What’s leaking</p>
-      <h2>Ranked by kronor, not by guilt</h2>
-      <p class="sub">Everything below is calculated from your answers. Tick what you’ll actually do and the total updates.</p>
-    </div>
-    <div class="waste-grid" id="waste-grid"></div>
-    <div class="plan-bar" id="plan-bar">
-      <div class="plan-now" aria-live="polite">
-        <span class="muted">In your plan</span>
-        <strong id="plan-sek">0 kr</strong>
-        <span id="plan-meta" class="muted">nothing selected yet</span>
-      </div>
-      <div class="plan-progress"><span id="plan-fill"></span></div>
-    </div>
-  </section>
-
-  <!-- ───────────────────────── prices ───────────────────────── -->
-  <section class="section" id="prices">
-    <div class="section-head">
-      <p class="kicker">04 · Timing</p>
-      <h2>Same kWh, cheaper hours</h2>
-      <p class="sub" id="prices-sub">Swedish spot prices swing a lot within a single day. Moving a wash is free money.</p>
-    </div>
-    <div class="panel price-panel">
-      <div class="price-head">
-        <div>
-          <p class="muted small" id="price-date">Today</p>
-          <h3 id="price-now">—</h3>
-        </div>
-        <div class="price-badges" id="price-badges"></div>
-      </div>
-      <div class="chart" id="chart"></div>
-      <div class="shift-note" id="shift-note"></div>
-    </div>
-  </section>
-
-  <!-- ───────────────────────── coach ───────────────────────── -->
-  <section class="section" id="coach">
-    <div class="section-head">
-      <p class="kicker">05 · The coach</p>
-      <h2>Ask anything about your bill</h2>
-      <p class="sub">Answers are grounded in <em>your</em> numbers. A small rule-based router handles the common questions offline; add an API key and any OpenAI-compatible LLM can answer the rest.</p>
-    </div>
-    <div class="panel coach-panel">
-      <div class="chat" id="chat"></div>
-      <div class="chips" id="coach-chips"></div>
-      <form class="ask" id="ask-form">
-        <input id="ask-input" type="text" placeholder="Why is my bill so high?" aria-label="Ask the coach">
-        <button class="btn btn-ink" type="submit">Ask</button>
-      </form>
-      <details class="ai-settings">
-        <summary>Use a large language model (optional)</summary>
-        <p class="small muted">Any OpenAI-compatible endpoint. The key is stored in this browser only and sent straight to that endpoint — never to us.</p>
-        <div class="ai-fields">
-          <label>Endpoint <input id="ai-base" type="url" placeholder="https://api.openai.com/v1"></label>
-          <label>Model <input id="ai-model" type="text" placeholder="gpt-4o-mini"></label>
-          <label>API key <input id="ai-key" type="password" placeholder="sk-…"></label>
-        </div>
-        <p class="small" id="ai-status"></p>
-      </details>
-    </div>
-  </section>
-
   <!-- ───────────────────────── numbers ───────────────────────── -->
   <section class="section" id="numbers">
     <div class="section-head">
-      <p class="kicker">06 · The numbers</p>
+      <p class="kicker">03 · The numbers</p>
       <h2>What we assume, and why</h2>
       <p class="sub">Every figure is an estimate with a source. Change the two carbon factors below if you have better local data.</p>
     </div>
@@ -199,7 +134,7 @@
   <div class="contact-inner">
     <p class="kicker">Contact us</p>
     <h2>Want Wattkoll in<br>your building?</h2>
-    <a class="contact-mail" href="mailto:xiec224jw@student.lnu.se">xiec224jw@student.lnu.se</a>
+    <a class="contact-mail" href="mailto:cb224jw@student.lnu.se">cb224jw@student.lnu.se</a>
     <p class="contact-note">Student housing operators, energy companies, or a team that wants to keep building —
       we answer fast. This is a student prototype from the AI for Energy Saving hackathon.</p>
   </div>
