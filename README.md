@@ -9,6 +9,8 @@ ranked list of waste with kronor attached, and a plan they can actually finish.
 
 No meter. No account. No personal data leaves the browser.
 
+![Wattkoll — the receipt](docs/screenshot.png)
+
 ```
 python3 server.py          # http://127.0.0.1:8000, opens your browser
 ```
