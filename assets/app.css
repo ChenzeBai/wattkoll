@@ -896,6 +896,47 @@ input[type="range"]::-webkit-slider-thumb {
   line-height: 1.6;
 }
 
+/* ───────────────────────── contact ───────────────────────── */
+
+.contact {
+  background: var(--green);
+  color: #f2efe4;
+  padding: clamp(56px, 7vw, 92px) var(--gutter);
+}
+
+.contact-inner { max-width: var(--max); margin: 0 auto; }
+
+.contact .kicker { color: var(--lime); opacity: .85; }
+
+.contact h2 {
+  font-size: clamp(30px, 4.6vw, 58px);
+  line-height: 1.02;
+  color: #f2efe4;
+  margin-bottom: 26px;
+}
+
+.contact-mail {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: clamp(16px, 2.3vw, 28px);
+  letter-spacing: -.01em;
+  color: var(--lime);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(220, 239, 110, .35);
+  padding-bottom: 5px;
+  transition: border-color .15s ease;
+  word-break: break-word;
+}
+.contact-mail:hover { border-color: var(--lime); }
+
+.contact-note {
+  margin-top: 20px;
+  max-width: 52ch;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(242, 239, 228, .62);
+}
+
 /* ───────────────────────── footer ───────────────────────── */
 
 .foot {

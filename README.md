@@ -92,6 +92,7 @@ data/                 price snapshot, API cache
 tests/model.test.mjs  12 tests over the model
 docs/SAVINGS.md       the per-student numbers and where they come from
 docs/BUSINESS.md      first business model
+deck/                 5-minute pitch deck (Wattkoll-pitch.pptx + build script)
 ```
 
 ## Limits
