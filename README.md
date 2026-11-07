@@ -9,6 +9,8 @@ ranked list of waste with kronor attached, and a plan they can actually finish.
 
 No meter. No account. No personal data leaves the browser.
 
+**Repo:** [github.com/ChenzeBai/wattkoll](https://github.com/ChenzeBai/wattkoll)
+
 ![Wattkoll — the receipt](docs/screenshot.png)
 
 ```
